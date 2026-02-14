@@ -133,7 +133,7 @@ class _ColorsPageState extends State<ColorsPage> {
       body: SafeArea(
     child: Scrollbar(
     thickness: 10,
-    isAlwaysShown: true,
+    thumbVisibility: true,
       child: ListView.builder(
         itemCount: 1,
         itemBuilder:(context,index)=>

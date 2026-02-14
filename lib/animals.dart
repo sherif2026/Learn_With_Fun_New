@@ -128,7 +128,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
         child: Scrollbar(
             thickness: 10,
-            isAlwaysShown: true,
+            thumbVisibility: true,
           child: ListView.builder(
             itemCount: 1,
             itemBuilder:(context,index)=>

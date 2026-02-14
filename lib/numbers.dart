@@ -131,7 +131,7 @@ Widget build(BuildContext context) {
       body: SafeArea(
         child: Scrollbar(
           thickness: 10,
-            // isAlwaysShown: true,
+            // thumbVisibility: true,
             child : SingleChildScrollView( child :
             Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
