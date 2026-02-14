@@ -1,0 +1,37 @@
+name: Android APK Build
+
+on:
+  push:
+    branches: [ main ]  # كل مرة تعمل push على main سيعمل Build
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+
+    - name: Cache Gradle
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.gradle/caches
+          ~/.gradle/wrapper/
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+        restore-keys: |
+          ${{ runner.os }}-gradle-
+
+    - name: Build APK
+      run: ./gradlew assembleRelease
+
+    - name: Upload APK
+      uses: actions/upload-artifact@v3
+      with:
+        name: my-app-release-apk
+        path: app/build/outputs/apk/release/app-release.apk
